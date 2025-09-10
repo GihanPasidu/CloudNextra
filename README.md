@@ -19,6 +19,36 @@ CloudNextra Solutions is a company specializing in software development, mobile 
 - CSS3
 - JavaScript
 - Bootstrap 5
+- Font Awesome Icons
+
+## Our Projects
+
+### 🌟 Featured Projects
+
+1. **[Personal Portfolio](https://github.com/GihanPasidu/portfolio)**
+   - Modern responsive portfolio website
+   - Built with TypeScript, CSS, HTML
+
+2. **[Yash Store](https://github.com/GihanPasidu/yash-store)**
+   - Premium e-commerce platform for earrings
+   - Features: Dark/Light mode, shopping cart, responsive design
+   - Technologies: HTML5, CSS3, Vanilla JavaScript
+
+3. **[FLK Shop](https://github.com/GihanPasidu/FLK-httml)**
+   - Modern e-commerce website
+   - Technologies: HTML, CSS, JavaScript
+
+4. **[Tic Tac Toe Game](https://github.com/GihanPasidu/Tic-Tac-Toe-Game)**
+   - Interactive game with multiplayer and AI modes
+   - Technologies: JavaScript, HTML, Tailwind CSS
+
+5. **[Telegram Support](https://github.com/GihanPasidu/telegram-support)**
+   - Telegram account support and recovery tool
+   - Technologies: HTML, CSS, JavaScript
+
+6. **[Eshan KDH Van Hire](https://github.com/GihanPasidu/eshan-kdh)**
+   - Professional van hire service website for Sri Lankan tourists
+   - Technologies: HTML5, CSS3
 
 ## Getting Started
 

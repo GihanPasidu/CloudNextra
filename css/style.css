@@ -2,16 +2,28 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: #333;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     position: relative;
     overflow: hidden;
+    min-height: 100px;
 }
 
 header::before {
@@ -29,6 +41,7 @@ header::before {
     background: rgba(0, 0, 0, 0.9) !important;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 0;
 }
 
 .navbar-brand {
@@ -40,6 +53,7 @@ header::before {
 .nav-link {
     font-weight: 500;
     transition: all 0.3s ease;
+    padding: 0.5rem 1rem !important;
 }
 
 .nav-link:hover {
@@ -52,6 +66,7 @@ header::before {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     overflow: hidden;
+    margin-bottom: 2rem;
 }
 
 .card:hover {
@@ -61,6 +76,12 @@ header::before {
 
 .card-body {
     padding: 2rem;
+    text-align: center;
+}
+
+/* Add vertical spacing between stacked buttons in project cards */
+.card-body .btn + .btn {
+    margin-top: 0.75rem;
 }
 
 .btn-primary {
@@ -73,6 +94,10 @@ header::before {
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    min-height: 44px; /* Touch target size */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-primary:hover {
@@ -88,6 +113,10 @@ header::before {
     padding: 10px 25px;
     font-weight: 600;
     transition: all 0.3s ease;
+    min-height: 44px; /* Touch target size */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-outline-primary:hover {
@@ -99,46 +128,49 @@ header::before {
 footer {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     margin-top: auto;
+    padding: 2rem 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     letter-spacing: -0.5px;
+    margin-bottom: 1rem;
 }
 
 .display-4 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
 .lead {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 4vw, 1.25rem);
     font-weight: 300;
     color: rgba(255, 255, 255, 0.9);
 }
 
 .card-title {
     color: #667eea;
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 3vw, 1.25rem);
     margin-bottom: 1rem;
 }
 
 .card-text {
     color: #666;
     line-height: 1.7;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
 }
 
 /* Hero section styling */
 .text-center h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #333;
 }
 
 .text-center .lead {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     color: #666;
     margin-bottom: 2rem;
 }
@@ -149,11 +181,19 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #e9ecef;
     padding: 12px 20px;
     transition: all 0.3s ease;
+    font-size: 1rem;
+    min-height: 44px; /* Touch target size */
 }
 
 .form-control:focus {
     border-color: #667eea;
     box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
 /* Animation classes */
@@ -170,32 +210,308 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .display-4 {
-        font-size: 2.5rem;
-    }
-
-    .text-center h2 {
-        font-size: 2rem;
-    }
-
-    .card {
-        margin-bottom: 2rem;
-    }
-
-    .btn-primary {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-    }
+/* Container adjustments */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1200px;
 }
 
-@media (max-width: 576px) {
+main {
+    padding: 2rem 0;
+}
+
+/* Icon adjustments */
+.fas, .fab {
+    transition: all 0.3s ease;
+}
+
+/* Link styling */
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* List styling */
+ul {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design - Mobile First Approach */
+
+/* Extra Small Devices (phones, 576px and down) */
+@media (max-width: 575.98px) {
     .display-4 {
         font-size: 2rem;
+        text-align: center;
     }
 
     .navbar-brand {
         font-size: 1.25rem;
+    }
+
+    .navbar-nav {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+        font-size: 1rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        padding: 12px 20px;
+    }
+
+    .text-center h2 {
+        font-size: 1.8rem;
+    }
+
+    .text-center .lead {
+        font-size: 1rem;
+    }
+
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px 16px;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5rem;
+    }
+
+    h4, h5, h6 {
+        font-size: 1.25rem;
+    }
+
+    .fas.fa-3x {
+        font-size: 2rem !important;
+    }
+
+    .fab.fa-2x {
+        font-size: 1.5rem !important;
+    }
+
+    footer {
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    main {
+        padding: 1rem 0;
+    }
+}
+
+/* Small Devices (tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .card-body {
+        padding: 1.75rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+    }
+
+    .text-center h2 {
+        font-size: 2.2rem;
+    }
+
+    .fas.fa-3x {
+        font-size: 2.5rem !important;
+    }
+
+    .fab.fa-2x {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .display-4 {
+        font-size: 3rem;
+    }
+
+    .card-body {
+        padding: 1.75rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        font-size: 0.95rem;
+        padding: 11px 22px;
+    }
+
+    .text-center h2 {
+        font-size: 2.3rem;
+    }
+
+    .fas.fa-3x {
+        font-size: 2.75rem !important;
+    }
+}
+
+/* Large Devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .display-4 {
+        font-size: 3.2rem;
+    }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        font-size: 0.95rem;
+        padding: 12px 25px;
+    }
+
+    .text-center h2 {
+        font-size: 2.4rem;
+    }
+}
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .display-4 {
+        font-size: 3.5rem;
+    }
+
+    .card-body {
+        padding: 2.25rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    .text-center h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .btn, footer {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+
+    .card {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+
+    .card-text {
+        color: #cccccc;
+    }
+
+    .text-center .lead {
+        color: #cccccc;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    header {
+        min-height: 80px;
+        padding: 1rem 0;
+    }
+
+    .display-4 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .lead {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+        padding: 8px 16px;
+        font-size: 0.8rem;
     }
 }

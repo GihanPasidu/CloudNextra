@@ -2,17 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CloudNextra Solutions Projects - Showcase of our software development and web development work">
+    <meta name="keywords" content="projects, portfolio, software development, web development, CloudNextra">
+    <meta name="author" content="CloudNextra Solutions">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Projects - CloudNextra Solutions</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/professional.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
 <body>
-    <header class="bg-primary text-white py-3">
+    <header class="bg-primary text-white py-3 morphing-bg parallax-header">
         <div class="container">
-            <h1 class="display-4">CloudNextra Solutions</h1>
-            <p class="lead">Innovative Software, Apps, and Websites</p>
+            <h1 class="display-4 typewriter">CloudNextra Solutions</h1>
+            <p class="lead animate-fadeInUp animate-delay-500">Innovative Software, Apps, and Websites</p>
         </div>
     </header>
 
@@ -34,77 +42,159 @@
     </nav>
 
     <main class="container my-5">
-        <h2><i class="fas fa-project-diagram text-primary me-3"></i>Our Projects</h2>
-        <p>Explore some of our recent work showcasing our expertise in software development, mobile apps, and web design.</p>
+        <section class="text-center mb-5 reveal animate-fadeInUp">
+            <h2 class="text-gradient"><i class="fas fa-project-diagram text-primary me-3"></i>Our Projects</h2>
+            <p class="lead text-shadow-soft">Explore some of our recent work showcasing our expertise in software development, mobile apps, and web design.</p>
+        </section>
 
         <div class="row">
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 reveal animate-delay-100 hover-lift hover-glow">
                     <div class="card-body text-center">
-                        <i class="fas fa-tasks fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">TaskMaster App</h5>
-                        <p class="card-text">A productivity mobile app for task management with cloud synchronization. Built with React Native.</p>
-                        <a href="#" class="btn btn-primary me-2"><i class="fas fa-eye me-1"></i>View Demo</a>
-                        <a href="#" class="btn btn-outline-primary"><i class="fab fa-github me-1"></i>GitHub</a>
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-user fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-gradient">Personal Portfolio</h5>
+                        <p class="card-text">A modern, responsive personal portfolio website showcasing skills and projects. Built with TypeScript and modern web technologies.</p>
+                        <div class="card-features mb-3">
+                            <span class="badge bg-primary me-1">TypeScript</span>
+                            <span class="badge bg-secondary me-1">CSS3</span>
+                            <span class="badge bg-success">Responsive</span>
+                        </div>
+                        <a href="https://pasidu.cloudnextra.dev" target="_blank" class="btn btn-primary me-2 magnetic-btn ripple">
+                            <i class="fas fa-eye me-1"></i>View Demo
+                        </a>
+                        <a href="https://github.com/GihanPasidu/portfolio" target="_blank" class="btn btn-outline-primary magnetic-btn ripple">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 reveal animate-delay-200 hover-lift hover-glow">
                     <div class="card-body text-center">
-                        <i class="fas fa-shopping-cart fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">E-Commerce Platform</h5>
-                        <p class="card-text">A full-featured online store with payment integration and inventory management. Developed with Node.js and MongoDB.</p>
-                        <a href="#" class="btn btn-primary me-2"><i class="fas fa-eye me-1"></i>View Demo</a>
-                        <a href="#" class="btn btn-outline-primary"><i class="fab fa-github me-1"></i>GitHub</a>
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-shopping-bag fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-gradient">Yash Store</h5>
+                        <p class="card-text">Premium e-commerce platform for exquisite earrings collection. Features dark/light mode, shopping cart, and responsive design.</p>
+                        <div class="card-features mb-3">
+                            <span class="badge bg-primary me-1">E-commerce</span>
+                            <span class="badge bg-secondary me-1">JavaScript</span>
+                            <span class="badge bg-success">Dark Mode</span>
+                        </div>
+                        <a href="https://yashstore.cloudnextra.dev" target="_blank" class="btn btn-primary me-2 magnetic-btn ripple">
+                            <i class="fas fa-eye me-1"></i>View Demo
+                        </a>
+                        <a href="https://github.com/GihanPasidu/yash-store" target="_blank" class="btn btn-outline-primary magnetic-btn ripple">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 reveal animate-delay-300 hover-lift hover-glow">
                     <div class="card-body text-center">
-                        <i class="fas fa-camera fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Portfolio Website</h5>
-                        <p class="card-text">A responsive portfolio website for a photographer. Built with HTML, CSS, and JavaScript.</p>
-                        <a href="#" class="btn btn-primary me-2"><i class="fas fa-eye me-1"></i>View Demo</a>
-                        <a href="#" class="btn btn-outline-primary"><i class="fab fa-github me-1"></i>GitHub</a>
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-store fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-gradient">FashionLk Shop</h5>
+                        <p class="card-text">Modern e-commerce website with product catalog, shopping functionality, and responsive design. Built with HTML, CSS, and JavaScript.</p>
+                        <div class="card-features mb-3">
+                            <span class="badge bg-primary me-1">HTML5</span>
+                            <span class="badge bg-secondary me-1">CSS3</span>
+                            <span class="badge bg-success">JavaScript</span>
+                        </div>
+                        <a href="https://fashionlk.netlify.app" target="_blank" class="btn btn-primary me-2 magnetic-btn ripple">
+                            <i class="fas fa-eye me-1"></i>View Demo
+                        </a>
+                        <a href="https://github.com/GihanPasidu/FLK-httml" target="_blank" class="btn btn-outline-primary magnetic-btn ripple">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 reveal animate-delay-400 hover-lift hover-glow">
                     <div class="card-body text-center">
-                        <i class="fas fa-chart-bar fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Data Analytics Dashboard</h5>
-                        <p class="card-text">A web-based dashboard for visualizing business data. Created with Python Flask and D3.js.</p>
-                        <a href="#" class="btn btn-primary me-2"><i class="fas fa-eye me-1"></i>View Demo</a>
-                        <a href="#" class="btn btn-outline-primary"><i class="fab fa-github me-1"></i>GitHub</a>
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-gamepad fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-gradient">Tic Tac Toe Game</h5>
+                        <p class="card-text">Interactive Tic Tac Toe game with multiplayer and single-player modes. Features modern UI with Tailwind CSS and responsive design.</p>
+                        <div class="card-features mb-3">
+                            <span class="badge bg-primary me-1">Game</span>
+                            <span class="badge bg-secondary me-1">Tailwind</span>
+                            <span class="badge bg-success">Interactive</span>
+                        </div>
+                        <a href="https://game.cloudnextra.dev" target="_blank" class="btn btn-primary me-2 magnetic-btn ripple">
+                            <i class="fas fa-eye me-1"></i>View Demo
+                        </a>
+                        <a href="https://github.com/GihanPasidu/Tic-Tac-Toe-Game" target="_blank" class="btn btn-outline-primary magnetic-btn ripple">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 reveal animate-delay-500 hover-lift hover-glow">
                     <div class="card-body text-center">
-                        <i class="fas fa-share-alt fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Social Media Scheduler</h5>
-                        <p class="card-text">A tool for scheduling and managing social media posts across platforms. Built with React and Firebase.</p>
-                        <a href="#" class="btn btn-primary me-2"><i class="fas fa-eye me-1"></i>View Demo</a>
-                        <a href="#" class="btn btn-outline-primary"><i class="fab fa-github me-1"></i>GitHub</a>
+                        <div class="icon-wrapper mb-3">
+                            <i class="fab fa-telegram fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-gradient">Telegram Support</h5>
+                        <p class="card-text">Telegram account support and recovery tool. Provides assistance for Telegram-related issues with user-friendly interface.</p>
+                        <div class="card-features mb-3">
+                            <span class="badge bg-primary me-1">Support</span>
+                            <span class="badge bg-secondary me-1">Tool</span>
+                            <span class="badge bg-success">Telegram</span>
+                        </div>
+                        <a href="https://telegramsupport.netlify.app" target="_blank" class="btn btn-primary me-2 magnetic-btn ripple">
+                            <i class="fas fa-eye me-1"></i>View Demo
+                        </a>
+                        <a href="https://github.com/GihanPasidu/telegram-support" target="_blank" class="btn btn-outline-primary magnetic-btn ripple">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 reveal animate-delay-600 hover-lift hover-glow">
                     <div class="card-body text-center">
-                        <i class="fas fa-dumbbell fa-3x text-primary mb-3"></i>
-                        <h5 class="card-title">Fitness Tracking App</h5>
-                        <p class="card-text">A mobile app for tracking workouts and health metrics. Developed with Flutter.</p>
-                        <a href="#" class="btn btn-primary me-2"><i class="fas fa-eye me-1"></i>View Demo</a>
-                        <a href="#" class="btn btn-outline-primary"><i class="fab fa-github me-1"></i>GitHub</a>
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-car fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-gradient">Eshan KDH Van Hire</h5>
+                        <p class="card-text">Professional van hire service website for tourists in Sri Lanka's cultural triangle. Features service showcase and contact integration.</p>
+                        <div class="card-features mb-3">
+                            <span class="badge bg-primary me-1">Tourism</span>
+                            <span class="badge bg-secondary me-1">Service</span>
+                            <span class="badge bg-success">Professional</span>
+                        </div>
+                        <a href="https://eshankdh.netlify.app" target="_blank" class="btn btn-primary me-2 magnetic-btn ripple">
+                            <i class="fas fa-eye me-1"></i>View Demo
+                        </a>
+                        <a href="https://github.com/GihanPasidu/eshan-kdh" target="_blank" class="btn btn-outline-primary magnetic-btn ripple">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Call to Action Section -->
+        <section class="text-center mt-5 pt-5 reveal animate-slideInFromBottom">
+            <div class="cta-container glass-effect">
+                <h3 class="mb-4 text-gradient">Impressed by Our Work?</h3>
+                <p class="lead mb-4 text-shadow-soft">Ready to create something amazing together? Let's discuss your project and bring your ideas to life.</p>
+                <a href="contact.html" class="btn btn-primary btn-lg me-3 magnetic-btn ripple">
+                    <i class="fas fa-rocket me-2"></i>Start Your Project
+                </a>
+                <a href="about.html" class="btn btn-outline-primary btn-lg magnetic-btn ripple">
+                    <i class="fas fa-info-circle me-2"></i>Learn More About Us
+                </a>
+            </div>
+        </section>
     </main>    <footer class="bg-dark text-white py-3">
         <div class="container text-center">
             <p>&copy; 2025 CloudNextra Solutions. All rights reserved.</p>
