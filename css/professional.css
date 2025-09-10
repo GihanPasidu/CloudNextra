@@ -725,23 +725,19 @@ main h2 {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Neon Glow Effect */
-.neon-glow {
-    text-shadow: 
-        0 0 5px var(--primary-color),
-        0 0 10px var(--primary-color),
-        0 0 15px var(--primary-color),
-        0 0 20px var(--primary-color);
-}
-
-/* Magnetic Effect for Buttons */
+/* Magnetic Effect for Buttons - Optimized for Performance */
 .magnetic-btn {
-    transition: var(--transition);
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    --mouse-x: 0;
+    --mouse-y: 0;
 }
 
 .magnetic-btn:hover {
-    transform: translate3d(0, -3px, 0) scale(1.05);
+    transition: transform 0.1s ease-out;
 }
 
 /* Ripple Effect */
@@ -768,14 +764,18 @@ main h2 {
     height: 300px;
 }
 
-/* Tilt Effect */
+/* Tilt Effect - Optimized for Performance */
 .tilt-effect {
-    transition: var(--transition);
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform;
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
 }
 
 .tilt-effect:hover {
-    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(10px);
+    transition: transform 0.1s ease-out;
 }
 
 /* Scroll-triggered animations */
@@ -978,4 +978,41 @@ main h2 {
 
 #contactForm:hover::before {
     opacity: 0.05;
+}
+
+/* Performance Optimizations for Mouse Animations */
+.card, .btn, .magnetic-btn, .tilt-effect {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* Reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+    .magnetic-btn,
+    .tilt-effect {
+        transition: none !important;
+    }
+    
+    .magnetic-btn:hover,
+    .tilt-effect:hover {
+        transform: none !important;
+    }
+}
+
+/* Performance boost for animations */
+.card,
+.btn-primary,
+.btn-outline-primary,
+.magnetic-btn,
+.tilt-effect {
+    transform: translateZ(0); /* Force GPU acceleration */
+}
+
+/* Optimize for high refresh rate displays */
+@media (min-resolution: 120dpi) {
+    .magnetic-btn,
+    .tilt-effect {
+        transition-duration: 0.1s;
+    }
 }

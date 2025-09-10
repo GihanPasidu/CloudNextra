@@ -251,49 +251,104 @@ function createParticle(container) {
     container.appendChild(particle);
 }
 
-// Magnetic button effect
+// Optimized Magnetic button effect with performance improvements
 function initMagneticButtons() {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-outline-primary');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-outline-primary, .magnetic-btn');
     
     buttons.forEach(button => {
         button.classList.add('magnetic-btn');
+        let animationId = null;
+        let isHovering = false;
         
-        button.addEventListener('mousemove', (e) => {
-            const rect = button.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+        // Throttled mouse move handler for better performance
+        const throttledMouseMove = throttle((e) => {
+            if (!isHovering) return;
             
-            button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+            // Cancel previous animation frame
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            
+            animationId = requestAnimationFrame(() => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Use CSS custom properties for better performance
+                button.style.setProperty('--mouse-x', `${x * 0.08}px`); // Reduced intensity
+                button.style.setProperty('--mouse-y', `${y * 0.08}px`); // Reduced intensity
+                button.style.transform = `translate(var(--mouse-x, 0), var(--mouse-y, 0)) scale(1.03)`; // Reduced scale
+            });
+        }, 16); // ~60 FPS
+        
+        button.addEventListener('mouseenter', () => {
+            isHovering = true;
         });
         
+        button.addEventListener('mousemove', throttledMouseMove);
+        
         button.addEventListener('mouseleave', () => {
+            isHovering = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            button.style.setProperty('--mouse-x', '0');
+            button.style.setProperty('--mouse-y', '0');
             button.style.transform = 'translate(0, 0) scale(1)';
         });
     });
 }
 
-// Tilt effect for cards
+// Optimized Tilt effect for cards with performance improvements
 function initTiltEffects() {
     const cards = document.querySelectorAll('.card');
     
     cards.forEach(card => {
         card.classList.add('tilt-effect');
+        let animationId = null;
+        let isHovering = false;
         
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+        // Throttled mouse move handler for better performance
+        const throttledMouseMove = throttle((e) => {
+            if (!isHovering) return;
             
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+            // Throttle using requestAnimationFrame
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
             
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            animationId = requestAnimationFrame(() => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Reduce calculation complexity and intensity
+                const rotateX = (y - centerY) / 25; // Further reduced from /20 to /25
+                const rotateY = (centerX - x) / 25; // Further reduced from /20 to /25
+                
+                // Use CSS custom properties
+                card.style.setProperty('--tilt-x', `${rotateX}deg`);
+                card.style.setProperty('--tilt-y', `${rotateY}deg`);
+                card.style.transform = `perspective(1000px) rotateX(var(--tilt-x, 0)) rotateY(var(--tilt-y, 0)) translateZ(3px)`; // Reduced translateZ
+            });
+        }, 16); // ~60 FPS
+        
+        card.addEventListener('mouseenter', () => {
+            isHovering = true;
         });
         
+        card.addEventListener('mousemove', throttledMouseMove);
+        
         card.addEventListener('mouseleave', () => {
+            isHovering = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            card.style.setProperty('--tilt-x', '0deg');
+            card.style.setProperty('--tilt-y', '0deg');
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
         });
     });
@@ -375,6 +430,26 @@ document.addEventListener('click', function(e) {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+// Performance optimization: Throttle function for better mouse performance
+function throttle(func, delay) {
+    let timeoutId;
+    let lastExecTime = 0;
+    return function (...args) {
+        const currentTime = Date.now();
+        
+        if (currentTime - lastExecTime > delay) {
+            func.apply(this, args);
+            lastExecTime = currentTime;
+        } else {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                func.apply(this, args);
+                lastExecTime = Date.now();
+            }, delay - (currentTime - lastExecTime));
+        }
+    };
 }
 
 // Performance optimization: Debounce function for resize events
