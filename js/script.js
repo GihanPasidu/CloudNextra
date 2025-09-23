@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all animations and effects
     initAnimations();
     initScrollAnimations();
+    init3DScrollAnimations();
     initMagneticButtons();
     initTiltEffects();
     initTypingEffect();
@@ -219,6 +220,43 @@ function initScrollAnimations() {
     });
 }
 
+// 3D Scroll-triggered animations
+function init3DScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Add 3D reveal classes to elements
+    document.querySelectorAll('.card').forEach((card, index) => {
+        const revealTypes = ['reveal-3d', 'reveal-3d-left', 'reveal-3d-right', 'reveal-3d-flip', 'reveal-3d-cube'];
+        const randomType = revealTypes[index % revealTypes.length];
+        card.classList.add(randomType);
+        observer.observe(card);
+    });
+
+    // Add 3D parallax effects to sections
+    document.querySelectorAll('section').forEach((section, index) => {
+        if (index % 2 === 0) {
+            section.classList.add('parallax-3d');
+        }
+    });
+
+    // Add depth layers to various elements
+    document.querySelectorAll('h1, h2, h3').forEach((heading, index) => {
+        heading.classList.add(`depth-layer-${Math.min(index % 5 + 1, 5)}`);
+    });
+}
+
 // Optimized Magnetic button effect with performance improvements
 function initMagneticButtons() {
     const buttons = document.querySelectorAll('.btn-primary, .btn-outline-primary, .magnetic-btn');
@@ -294,13 +332,15 @@ function initTiltEffects() {
                 const centerY = rect.height / 2;
                 
                 // Reduce calculation complexity and intensity
-                const rotateX = (y - centerY) / 25; // Further reduced from /20 to /25
-                const rotateY = (centerX - x) / 25; // Further reduced from /20 to /25
+                const rotateX = (y - centerY) / 20; // Enhanced 3D effect
+                const rotateY = (centerX - x) / 20; // Enhanced 3D effect
+                const translateZ = Math.abs(rotateX) + Math.abs(rotateY); // Add depth based on rotation
                 
-                // Use CSS custom properties
+                // Use CSS custom properties with enhanced 3D
                 card.style.setProperty('--tilt-x', `${rotateX}deg`);
                 card.style.setProperty('--tilt-y', `${rotateY}deg`);
-                card.style.transform = `perspective(1000px) rotateX(var(--tilt-x, 0)) rotateY(var(--tilt-y, 0)) translateZ(3px)`; // Reduced translateZ
+                card.style.setProperty('--tilt-z', `${translateZ * 2}px`);
+                card.style.transform = `perspective(1000px) rotateX(var(--tilt-x, 0)) rotateY(var(--tilt-y, 0)) translateZ(var(--tilt-z, 0))`;
             });
         }, 16); // ~60 FPS
         
@@ -317,6 +357,7 @@ function initTiltEffects() {
             }
             card.style.setProperty('--tilt-x', '0deg');
             card.style.setProperty('--tilt-y', '0deg');
+            card.style.setProperty('--tilt-z', '0px');
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
         });
     });
