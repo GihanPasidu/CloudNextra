@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all animations and effects
     initAnimations();
     initScrollAnimations();
-    initParticleEffect();
     initMagneticButtons();
     initTiltEffects();
     initTypingEffect();
@@ -218,37 +217,6 @@ function initScrollAnimations() {
     document.querySelectorAll('.reveal').forEach(el => {
         observer.observe(el);
     });
-}
-
-// Particle effect for header
-function initParticleEffect() {
-    const header = document.querySelector('header');
-    if (!header) return;
-
-    const particles = document.createElement('div');
-    particles.className = 'particles';
-    header.appendChild(particles);
-
-    for (let i = 0; i < 50; i++) {
-        createParticle(particles);
-    }
-}
-
-function createParticle(container) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    const size = Math.random() * 4 + 1;
-    const left = Math.random() * 100;
-    const delay = Math.random() * 6;
-    
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${left}%`;
-    particle.style.animationDelay = `${delay}s`;
-    particle.style.animationDuration = `${6 + Math.random() * 4}s`;
-    
-    container.appendChild(particle);
 }
 
 // Optimized Magnetic button effect with performance improvements
